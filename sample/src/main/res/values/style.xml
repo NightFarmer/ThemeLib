@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="hehe1">
+        <item name="bcolor">#0000FF</item>
+        <item name="tcolor">#ff0000</item>
+        <item name="winBackColor">#92e684</item>
+    </style>
+
+    <style name="hehe2">
+        <item name="bcolor">#ff0000</item>
+        <item name="tcolor">#0000FF</item>
+        <item name="winBackColor">#ffaa72</item>
+    </style>
+</resources>
