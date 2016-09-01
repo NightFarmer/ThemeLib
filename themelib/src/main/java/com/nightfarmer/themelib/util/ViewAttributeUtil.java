@@ -15,7 +15,10 @@ public class ViewAttributeUtil {
             if(attr.getAttributeNameResource(i) == paramInt) {
                 String str = attr.getAttributeValue(i);
                 if(null != str && str.startsWith("?")) {
-                    value = Integer.valueOf(str.substring(1, str.length())).intValue();
+                    try {
+                        value = Integer.valueOf(str.substring(1, str.length()));
+                    } catch (NumberFormatException ignored) {
+                    }
                     return value;
                 }
             }

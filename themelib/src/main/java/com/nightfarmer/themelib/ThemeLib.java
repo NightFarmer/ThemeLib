@@ -9,12 +9,16 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
-import android.support.annotation.StyleRes;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 
 import com.nightfarmer.themelib.intf.ThemeChangeHandler;
 import com.nightfarmer.themelib.intf.ThemeInterface;
+
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 /**
  * Created by zhangfan on 16-8-31.
@@ -25,7 +29,7 @@ public class ThemeLib implements Application.ActivityLifecycleCallbacks {
 
     private static int style = -1;
 
-    public static void init(Application application, @StyleRes int defaultStyle) {
+    public static void init(Application application, int defaultStyle) {
         ThemeLib.style = defaultStyle;
         application.registerActivityLifecycleCallbacks(instance);
     }
@@ -74,7 +78,7 @@ public class ThemeLib implements Application.ActivityLifecycleCallbacks {
      * @param activity activity
      * @param styleRes 主题资源id
      */
-    public static void setThemeSoft(final Activity activity, @StyleRes final int styleRes) {
+    public static void setThemeSoft(final Activity activity, final int styleRes) {
         setThemeSoft(activity, styleRes, 300);
     }
 
@@ -85,7 +89,7 @@ public class ThemeLib implements Application.ActivityLifecycleCallbacks {
      * @param styleRes 主题资源id
      * @param delay    变更时间，毫秒
      */
-    public static void setThemeSoft(final Activity activity, @StyleRes final int styleRes, long delay) {
+    public static void setThemeSoft(final Activity activity, final int styleRes, long delay) {
         final ViewGroup decorView = (ViewGroup) activity.getWindow().getDecorView();
         decorView.setDrawingCacheEnabled(true);
         decorView.buildDrawingCache(true);
@@ -119,7 +123,7 @@ public class ThemeLib implements Application.ActivityLifecycleCallbacks {
      * @param activity activity
      * @param styleRes 主题资源id
      */
-    public static void setTheme(Activity activity, @StyleRes int styleRes) {
+    public static void setTheme(Activity activity, int styleRes) {
         ThemeLib.style = styleRes;
         activity.setTheme(styleRes);
         Resources.Theme theme = activity.getTheme();
@@ -128,6 +132,17 @@ public class ThemeLib implements Application.ActivityLifecycleCallbacks {
     }
 
     private static void setViewTheme(View view, Resources.Theme theme) {
+        if (view instanceof AbsListView) {
+            try {
+                Field localField = AbsListView.class.getDeclaredField("mRecycler");
+                localField.setAccessible(true);
+                Method localMethod = Class.forName("android.widget.AbsListView$RecycleBin").getDeclaredMethod("clear", new Class[0]);
+                localMethod.setAccessible(true);
+                localMethod.invoke(localField.get(view), new Object[0]);
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+        }
         if (view instanceof ThemeInterface) {
             ThemeChangeHandler[] themeChangeHandlers = ((ThemeInterface) view).getThemeChangeHandlers();
             if (themeChangeHandlers != null) {
@@ -139,6 +154,26 @@ public class ThemeLib implements Application.ActivityLifecycleCallbacks {
             }
         }
         if (view instanceof ViewGroup) {
+            if ("android.support.v7.widget.RecyclerView".equals(view.getClass().getName())) {
+                try {
+                    Field recycler = view.getClass().getDeclaredField("mRecycler");
+                    recycler.setAccessible(true);
+                    Object mRecycler = recycler.get(view);
+                    Field mViewCacheMax = mRecycler.getClass().getDeclaredField("mViewCacheMax");
+                    mViewCacheMax.setAccessible(true);
+                    mViewCacheMax.set(mRecycler, 0);
+                    Method clear = mRecycler.getClass().getDeclaredMethod("clear");
+                    clear.invoke(mRecycler);
+
+                    Field mRecyclerPoolField = mRecycler.getClass().getDeclaredField("mRecyclerPool");
+                    mRecyclerPoolField.setAccessible(true);
+                    Object mRecyclerPool = mRecyclerPoolField.get(mRecycler);
+                    Method declaredMethod = mRecyclerPool.getClass().getDeclaredMethod("clear");
+                    declaredMethod.invoke(mRecyclerPool);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
             ViewGroup viewGroup = (ViewGroup) view;
             for (int i = 0; i < viewGroup.getChildCount(); i++) {
                 setViewTheme(viewGroup.getChildAt(i), theme);

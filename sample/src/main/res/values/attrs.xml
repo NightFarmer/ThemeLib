@@ -5,4 +5,8 @@
     <attr name="bcolor" format="reference|color" />
 
     <attr name="winBackColor" format="reference|color" />
+
+    <attr name="btnBgd" format="reference|color" />
+
+    <attr name="toolbarBgd" format="reference|color" />
 </resources>

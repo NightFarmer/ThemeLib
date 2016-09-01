@@ -4,13 +4,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?attr/winBackColor"
-    android:gravity="center"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
     tools:context="com.nightfarmer.themelib.sample.MainActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.nightfarmer.themelib.sample.themeview.Toolbar
+            android:background="?attr/toolbarBgd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </com.nightfarmer.themelib.sample.themeview.Toolbar>
+    </android.support.design.widget.AppBarLayout>
 
     <com.nightfarmer.themelib.view.TextView
         android:layout_width="wrap_content"
@@ -24,8 +30,25 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
+        android:background="?attr/btnBgd"
         android:padding="10dp"
         android:text="变更主题"
         android:onClick="changeTheme"
         android:textColor="?attr/tcolor" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"/>
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+        </LinearLayout>
+    </LinearLayout>
 </com.nightfarmer.themelib.view.LinearLayout>
