@@ -12,6 +12,6 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        ThemeLib.init(this, R.style.hehe1);
+        ThemeLib.init(this, R.style.def);
     }
 }

@@ -1,54 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.nightfarmer.themelib.view.LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?attr/winBackColor"
-    android:orientation="vertical"
+    android:fitsSystemWindows="true"
     tools:context="com.nightfarmer.themelib.sample.MainActivity">
 
-    <android.support.design.widget.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <com.nightfarmer.themelib.sample.themeview.Toolbar
-            android:background="?attr/toolbarBgd"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
 
-        </com.nightfarmer.themelib.sample.themeview.Toolbar>
-    </android.support.design.widget.AppBarLayout>
+    <include layout="@layout/activity_main_content" />
 
-    <com.nightfarmer.themelib.view.TextView
+    <android.support.design.widget.NavigationView
+        android:id="@+id/nav_view"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="?attr/tcolor"
-        android:padding="5dp"
-        android:text="Hello ThemeLib!"
-        android:textColor="?attr/bcolor" />
-
-    <com.nightfarmer.themelib.view.Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:background="?attr/btnBgd"
-        android:padding="10dp"
-        android:text="变更主题"
-        android:onClick="changeTheme"
-        android:textColor="?attr/tcolor" />
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recyclerView"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent"/>
-        <LinearLayout
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="match_parent">
-        </LinearLayout>
-    </LinearLayout>
-</com.nightfarmer.themelib.view.LinearLayout>
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/nav_header"
+        app:menu="@menu/drawer_view" />
+</android.support.v4.widget.DrawerLayout>

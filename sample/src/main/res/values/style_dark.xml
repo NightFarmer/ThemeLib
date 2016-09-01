@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="dark" parent="AppDefault">
+        <item name="bcolor">#ff0000</item>
+        <item name="tcolor">#0000FF</item>
+        <item name="winBackColor">#ffaa72</item>
+        <item name="btnBgd">@drawable/btn_bgd2</item>
+        <item name="toolbarBgd">@color/bbbb</item>
+        <item name="navBgd">#db8cff</item>
+    </style>
+</resources>

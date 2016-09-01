@@ -1,19 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="hehe1">
+    <style name="def" parent="AppDefault">
         <item name="bcolor">#0000FF</item>
         <item name="tcolor">#ff0000</item>
         <item name="winBackColor">#92e684</item>
         <item name="btnBgd">@drawable/btn_bgd</item>
         <item name="toolbarBgd">@color/aaa</item>
+        <item name="navBgd">#ff9900</item>
     </style>
 
-    <style name="hehe2">
-        <item name="bcolor">#ff0000</item>
-        <item name="tcolor">#0000FF</item>
-        <item name="winBackColor">#ffaa72</item>
-        <item name="btnBgd">@drawable/btn_bgd2</item>
-        <item name="toolbarBgd">@color/bbbb</item>
-    </style>
 </resources>

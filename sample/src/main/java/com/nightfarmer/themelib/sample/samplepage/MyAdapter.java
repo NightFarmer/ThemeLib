@@ -1,10 +1,12 @@
-package com.nightfarmer.themelib.sample;
+package com.nightfarmer.themelib.sample.samplepage;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.nightfarmer.themelib.sample.R;
 
 /**
  * Created by zhangfan on 16-9-1.

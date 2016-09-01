@@ -9,4 +9,6 @@
     <attr name="btnBgd" format="reference|color" />
 
     <attr name="toolbarBgd" format="reference|color" />
+
+    <attr name="navBgd" format="reference|color" />
 </resources>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="com.nightfarmer.themelib.sample.MainActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.nightfarmer.themelib.sample.themeview.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/toolbarBgd">
+            <com.nightfarmer.themelib.view.TextView
+                android:textSize="18sp"
+                android:text="ThemeLib示例"
+                android:textColor="?attr/winBackColor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </com.nightfarmer.themelib.sample.themeview.Toolbar>
+    </android.support.design.widget.AppBarLayout>
+
+
+    <com.nightfarmer.themelib.view.LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?attr/winBackColor"
+        android:orientation="vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <com.nightfarmer.themelib.view.TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?attr/tcolor"
+            android:padding="5dp"
+            android:text="Hello ThemeLib!"
+            android:textColor="?attr/bcolor" />
+
+        <com.nightfarmer.themelib.view.Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="?attr/btnBgd"
+            android:onClick="changeTheme"
+            android:padding="10dp"
+            android:text="变更主题"
+            android:textColor="?attr/tcolor" />
+
+        <Button
+            android:text="RecyclerView测试"
+            android:onClick="testRecyclerView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </com.nightfarmer.themelib.view.LinearLayout>
+</android.support.design.widget.CoordinatorLayout>
