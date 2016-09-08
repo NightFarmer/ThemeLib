@@ -1,5 +1,9 @@
 ## ThemeLib
 
+Deprecated
+
+推荐使用最新主题库[Themer](https://github.com/NightFarmer/Themer)
+
 ### 简介
 可扩展的主题支持库</br>
 实现app在不重建activity的情况下变更主题配色。</br>
